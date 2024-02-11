@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="date" type="text">
+    <button onclick="getFlower()">탄생화</button>
+    <h1 id="flower"></h1>
+    <script>
+        function getFlower() {
+            const date = document.getElementById('date').value
+            fetch(`http://localhost:3000/flower/${date}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data.flower)
+                    document.getElementById('flower').innerHTML = data.flower
+                });
+        }
+    </script>
+</body>
+</html>
